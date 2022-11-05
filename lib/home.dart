@@ -4,7 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebaseex/UserModel.dart';
-import 'package:firebaseex/login.dart';
+import 'package:firebaseex/login/login.dart';
 import 'package:firebaseex/utils/utils.dart';
 import 'package:flutter/material.dart';
 
