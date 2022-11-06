@@ -1,17 +1,16 @@
-import 'package:firebaseex/login/login_viewmodel.dart';
-import 'package:firebaseex/signup/signup.dart';
+import 'package:firebaseex/signup/signup_viewmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../custom/custom_widget.dart';
 
-class LogIn extends StatelessWidget {
-  const LogIn({super.key});
+class SignUp extends StatelessWidget {
+  const SignUp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-      create: (_) => LoginModel(),
-      child: Consumer<LoginModel>(
+      create: (_) => SignupModel(),
+      child: Consumer<SignupModel>(
         builder: (context, value, child) => Scaffold(
           body: Padding(
             padding: const EdgeInsets.all(20.0),
@@ -22,10 +21,19 @@ class LogIn extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   const CustomText(
-                    text: "LOGIN",
+                    text: "SIGNUP",
                   ),
                   const SizedBox(
                     height: 50,
+                  ),
+                  CustomTextField(
+                    textfieldcontroller: value.usernamecontroller,
+                    labeltext: 'User Name',
+                    hinttext: "Enter Your User Name",
+                    prefexicon: Icons.person_outline_outlined,
+                  ),
+                  const SizedBox(
+                    height: 10,
                   ),
                   CustomTextField(
                     textfieldcontroller: value.emailcontroller,
@@ -58,22 +66,25 @@ class LogIn extends StatelessWidget {
                             color: Colors.white,
                           )
                         : const Text(
-                            "login",
+                            "Signup",
                             style: TextStyle(color: Colors.white),
                           ),
                     buttonAction: () {
                       value.inverseLoading();
-                      value.login(context);
+                      value.signUp(context);
                     },
                   ),
-                  CustomButtomRow(
-                    text: "Don't have an account?",
-                    textButtonText: "SignUp",
-                    textButtonAction: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => SignUp()));
-                    },
-                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const Text("Already have an account?"),
+                      TextButton(
+                          onPressed: () {
+                            Navigator.pop(context);
+                          },
+                          child: const Text("LogIn"))
+                    ],
+                  )
                 ],
               ),
             ),

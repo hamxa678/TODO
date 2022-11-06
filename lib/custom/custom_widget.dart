@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+// ignore: must_be_immutable
 class CustomTextField extends StatelessWidget {
   CustomTextField(
       {required this.textfieldcontroller,
@@ -13,7 +14,8 @@ class CustomTextField extends StatelessWidget {
   final String labeltext;
   final String hinttext;
   final IconData prefexicon;
-  IconData? suffexicon;
+  //IconData? suffexicon;
+  Widget? suffexicon;
   bool obsecuretext;
   VoidCallback? suffixIconAction;
 
@@ -34,10 +36,11 @@ class CustomTextField extends StatelessWidget {
               ),
               suffixIcon: GestureDetector(
                 onTap: suffixIconAction,
-                child: Icon(
-                  suffexicon,
-                  color: Colors.blue,
-                ),
+                child: suffexicon,
+                // Icon(
+                //   suffexicon,
+                //   color: Colors.blue,
+                // ),
               ),
               labelText: labeltext,
               labelStyle: const TextStyle(color: Colors.grey),
