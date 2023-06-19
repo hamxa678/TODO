@@ -33,9 +33,14 @@ class HomeModel extends ChangeNotifier {
         .collection('todos');
   }
 
+  clearText() {
+    todocontroller.clear();
+    notifyListeners();
+  }
+
   UserModel userModel = UserModel();
 
-  addTodo() async {
+  Future<void> addTodo() async {
     notifyListeners();
     FirebaseAuth _auth = FirebaseAuth.instance;
     FirebaseFirestore FBFS = FirebaseFirestore.instance;

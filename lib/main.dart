@@ -1,12 +1,17 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebaseex/home/home.dart';
 import 'package:firebaseex/login/login.dart';
+import 'package:firebaseex/signup/signup.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
+  await Firebase.initializeApp(
+    name: 'TODO',
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(MyApp());
 }
 
@@ -23,7 +28,11 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
         primarySwatch: Colors.blue,
       ),
-      home: user != null ? const Home() : const LogIn(),
+      home:
+          // SignUp(),
+          // const Home()
+          // LogIn(),
+          user != null ? const Home() : const LogIn(),
     );
   }
 }

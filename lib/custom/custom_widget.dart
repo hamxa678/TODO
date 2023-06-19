@@ -3,14 +3,15 @@ import 'package:flutter/material.dart';
 // ignore: must_be_immutable
 class CustomTextField extends StatelessWidget {
   CustomTextField(
-      {required this.textfieldcontroller,
+      {super.key,
+      this.textfieldcontroller,
       required this.labeltext,
       required this.hinttext,
       required this.prefexicon,
       this.obsecuretext = false,
       this.suffexicon,
       this.suffixIconAction});
-  final TextEditingController textfieldcontroller;
+  TextEditingController? textfieldcontroller;
   final String labeltext;
   final String hinttext;
   final IconData prefexicon;
@@ -21,33 +22,58 @@ class CustomTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-          color: Colors.grey.shade200,
-          borderRadius: const BorderRadius.all(Radius.circular(10))),
-      padding: const EdgeInsets.symmetric(horizontal: 8),
+    return SizedBox(
+      width: double.infinity,
+      height: 65,
       child: TextField(
-          controller: textfieldcontroller,
-          decoration: InputDecoration(
-              border: InputBorder.none,
-              prefixIcon: Icon(
-                prefexicon,
-                color: Colors.blue,
-              ),
-              suffixIcon: GestureDetector(
-                onTap: suffixIconAction,
-                child: suffexicon,
-                // Icon(
-                //   suffexicon,
-                //   color: Colors.blue,
-                // ),
-              ),
-              labelText: labeltext,
-              labelStyle: const TextStyle(color: Colors.grey),
-              hintText: hinttext),
-          obscureText: obsecuretext,
-          obscuringCharacter: "*"),
+        controller: textfieldcontroller,
+        decoration: InputDecoration(
+            border: InputBorder.none,
+            prefixIcon: Icon(
+              prefexicon,
+              color: Colors.blue,
+            ),
+            suffixIcon: suffexicon ??
+                GestureDetector(
+                  onTap: suffixIconAction,
+                  child: suffexicon,
+                ),
+            labelText: labeltext,
+            labelStyle: const TextStyle(color: Colors.grey),
+            hintText: hinttext),
+        obscureText: obsecuretext,
+        obscuringCharacter: "*",
+      ),
     );
+    // Container(
+    //   height: 100,
+    //   decoration: BoxDecoration(
+    //       color: Colors.grey.shade200,
+    //       borderRadius: const BorderRadius.all(Radius.circular(10))),
+    //   padding: const EdgeInsets.symmetric(horizontal: 8),
+    //   child: TextField(
+    //     controller: textfieldcontroller,
+    //     decoration: InputDecoration(
+    //         border: InputBorder.none,
+    //         prefixIcon: Icon(
+    //           prefexicon,
+    //           color: Colors.blue,
+    //         ),
+    //         suffixIcon: GestureDetector(
+    //           onTap: suffixIconAction,
+    //           child: suffexicon,
+    //           // Icon(
+    //           //   suffexicon,
+    //           //   color: Colors.blue,
+    //           // ),
+    //         ),
+    //         labelText: labeltext,
+    //         labelStyle: const TextStyle(color: Colors.grey),
+    //         hintText: hinttext),
+    //     obscureText: obsecuretext,
+    //     obscuringCharacter: "*",
+    //   ),
+    // );
   }
 }
 

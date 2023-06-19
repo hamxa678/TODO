@@ -1,3 +1,4 @@
+import 'package:firebaseex/login/login.dart';
 import 'package:firebaseex/signup/signup_viewmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -26,33 +27,32 @@ class SignUp extends StatelessWidget {
                   const SizedBox(
                     height: 50,
                   ),
-                  CustomTextField(
-                    textfieldcontroller: value.usernamecontroller,
-                    labeltext: 'User Name',
-                    hinttext: "Enter Your User Name",
-                    prefexicon: Icons.person_outline_outlined,
+                  CustomTextFieldTwo(
+                    controller: value.usernamecontroller,
+                    labelText: 'User Name',
+                    hintText: "Enter Your User Name",
+                    prefixIcon: Icons.person_outline_outlined,
                   ),
                   const SizedBox(
                     height: 10,
                   ),
-                  CustomTextField(
-                    textfieldcontroller: value.emailcontroller,
-                    labeltext: 'Email',
-                    hinttext: "Enter Your Email",
-                    prefexicon: Icons.alternate_email_outlined,
+                  CustomTextFieldTwo(
+                    controller: value.emailcontroller,
+                    labelText: 'Email',
+                    hintText: "Enter Your Email",
+                    prefixIcon: Icons.alternate_email_outlined,
                   ),
                   const SizedBox(
                     height: 10,
                   ),
-                  CustomTextField(
-                      textfieldcontroller: value.passwordcontroller,
-                      labeltext: 'Password',
-                      hinttext: "Enter Your Password",
-                      prefexicon: Icons.password_rounded,
-                      suffexicon: value.flag
-                          ? const Icon(Icons.visibility)
-                          : const Icon(Icons.visibility_off),
-                      obsecuretext: value.flag,
+                  CustomTextFieldTwo(
+                      controller: value.passwordcontroller,
+                      labelText: 'Password',
+                      hintText: "Enter Your Password",
+                      prefixIcon: Icons.password_rounded,
+                      suffixIcon:
+                          value.flag ? Icons.visibility : Icons.visibility_off,
+                      obscureText: value.flag,
                       suffixIconAction: () {
                         value.inverseflag();
                       }),

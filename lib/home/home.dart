@@ -162,26 +162,24 @@ class Home extends StatelessWidget {
                 const SizedBox(
                   height: 10,
                 ),
-                CustomTextField(
-                  textfieldcontroller: value.todocontroller,
-                  labeltext: 'Add TODO',
-                  hinttext: "Add your TODO",
-                  prefexicon: Icons.add_task_rounded,
-                  suffexicon: Container(
-                    decoration: const BoxDecoration(
-                        color: Colors.blue,
-                        borderRadius: BorderRadius.all(Radius.circular(10))),
-                    child: const Icon(
-                      Icons.add,
-                      color: Colors.white,
-                    ),
-                  ),
-                  suffixIconAction: () {
-                    (value.todocontroller.text.isEmpty)
-                        ? Utils().toastMessage("Field is Empty.")
-                        : value.addTodo();
-                  },
-                ),
+                CustomTextFieldTwo(
+                    controller: value.todocontroller,
+                    labelText: 'Add TODO',
+                    hintText: "Add your TODO",
+                    prefixIcon: Icons.add_task_rounded,
+                    suffixIcon: Icons.add,
+                    onSubmitted: (text) async {
+                      (text.isEmpty)
+                          ? Utils().toastMessage("Field is Empty.")
+                          : await value.addTodo();
+                      value.clearText();
+                    },
+                    suffixIconAction: () async {
+                      (value.todocontroller.text.isEmpty)
+                          ? Utils().toastMessage("Field is Empty.")
+                          : await value.addTodo();
+                      value.clearText();
+                    }),
               ],
             ),
           )),
